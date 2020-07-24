@@ -52,6 +52,7 @@ import java.util.Map;
             map.put("/image/**","anon");
             map.put("/css/**","anon");
             map.put("/js/**","anon");
+            map.put("/login","anon");
             //登录
             shiroFilterFactoryBean.setLoginUrl("/loginPage");
             //首页

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -47,15 +48,27 @@
 				</div>
 				<div class="col-xs-3 loginbackground">
 				<br>
-					<form id="defaultForm" action="UserLogin" method="post" class="form-horizontal">
+					<form id="defaultForm" action="login" method="post" class="form-horizontal">
 						<div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 								<h4 class="text-danger">${error}</h4>
+								<shiro:authenticated>
+                                    用户[<shiro:principal/>]已身份验证通过
+                                </shiro:authenticated>&nbsp;
+                                <shiro:guest>
+                                欢迎游客访问，<a href="${pageContext.request.contextPath}/login.jsp">登录</a>
+                                </shiro:guest>&nbsp;
+                                <shiro:hasRole name="admin">
+                                    用户[<shiro:principal/>]拥有角色admin<br/>
+                                </shiro:hasRole>&nbsp;
+                                <shiro:hasPermission name="user:create">
+                                    用户[<shiro:principal/>]拥有权限user:create<br/>
+                                </shiro:hasPermission>&nbsp;
 							</div>
 							<label for="inputSESAID"
 								class="col-sm-3 control-label">账号:</label>
 							<div class="col-sm-9">
-								<input name="staff.sesaid" type="SESAID" class="form-control"
+								<input name="userName" type="SESAID" class="form-control"
 									id="SESAIDs" placeholder="SESAID">
 								<span class="help-block" id="sesaid" />
 							</div>
@@ -64,7 +77,7 @@
 							<label for="inputPassword3"
 								class="col-sm-3 control-label">密码:</label>
 							<div class="col-sm-9">
-								<input name="staff.password" type="password"
+								<input name="password" type="password"
 									class="form-control" id="inputPassword3" placeholder="Password">
 								<span class="help-block" id="password" />
 							</div>

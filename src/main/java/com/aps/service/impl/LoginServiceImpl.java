@@ -3,7 +3,10 @@ package com.aps.service.impl;
 import com.aps.bean.Permissions;
 import com.aps.bean.Role;
 import com.aps.bean.User;
+import com.aps.controller.LoginController;
 import com.aps.service.LoginService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -12,6 +15,9 @@ import java.util.Map;
 import java.util.Set;
 @Service
 public class LoginServiceImpl implements LoginService {
+
+    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
+
     @Override
     public User getUserByName(String getMapByName) {
         //模拟数据库查询，正常情况此处是从数据库或者缓存查询。
@@ -35,8 +41,8 @@ public class LoginServiceImpl implements LoginService {
         roleSet.add(role);
         User user = new User();
         user.setId("1");
-        user.setUserName("wsl");
-        user.setPassword("123456");
+        user.setUserName("sesa511463");
+        user.setPassword("123");
         user.setRoles(roleSet);
         Map<String ,User> map = new HashMap<>();
         map.put(user.getUserName(), user);
@@ -48,11 +54,12 @@ public class LoginServiceImpl implements LoginService {
         Set<Role> roleSet1 = new HashSet<>();
         roleSet1.add(role1);
         User user1 = new User();
-        user.setId("2");
-        user.setUserName("zhangsan");
-        user.setPassword("123456");
-        user.setRoles(roleSet1);
+        user1.setId("2");
+        user1.setUserName("zhangsan");
+        user1.setPassword("123456");
+        user1.setRoles(roleSet1);
         map.put(user1.getUserName(), user1);
+        log.error(String.valueOf(map.get(userName)));
         return map.get(userName);
     }
 }
