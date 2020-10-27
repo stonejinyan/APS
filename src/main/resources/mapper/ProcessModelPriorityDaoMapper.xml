@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aps.dao.ProcessModelPriorityDao">
+    <select id="find" resultType="com.aps.bean.ProcessModelPriority">
+        SELECT
+        process_id AS processID,
+        product_model_id AS productModelID,
+        priority
+        FROM process_model
+        where
+        process_id = #{processModelPriority.process_id}
+        and product_model_id = #{processModelPriority.model_id}
+    </select>
+    <select id="findList" resultType="com.aps.bean.ProcessModelPriority">
+        SELECT
+        process_id AS processID,
+        product_model_id AS productModelID,
+        priority
+        FROM process_model
+    </select>
+</mapper>

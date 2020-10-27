@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aps.dao.BatchDao">
+    <select id="findList" resultType="com.aps.bean.BatchTable">
+        SELECT
+        batch_id AS batchID,
+        batch_name AS batchName,
+        batch_code AS batchCode,
+        project_id AS projectID,
+        project_name AS projectName,
+        project_code AS projectCode
+        FROM batchtable
+    </select>
+    <select id="find" resultType="com.aps.bean.BatchTable">
+        SELECT
+        batch_id AS batchID,
+        batch_name AS batchName,
+        batch_code AS batchCode,
+        project_id AS projectID,
+        project_name AS projectName,
+        project_code AS projectCode
+        FROM batchtable
+        WHERE
+        batch_id = #{batchID}
+    </select>
+    <update id="update">
+        UPDATE batch SET
+        batch_name = #{batchName},
+        batch_code = #{batchCode},
+        project_id = #{projectID}
+        WHERE batch_id = #{batchID}
+    </update>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="batchID">
+        INSERT INTO batch(
+        batch_name,
+        batch_code,
+        project_id
+        )
+        VALUES (
+        #{batchName},
+        #{batchCode},
+        #{projectID}
+        )
+    </insert>
+</mapper>

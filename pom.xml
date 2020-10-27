@@ -15,7 +15,7 @@
 	<packaging>war</packaging>
 	<description>Advanced planning and Scheduleing</description>
 	<properties>
-		<java.version>10</java.version>
+		<java.version>1.8</java.version>
 		<mysql-connector-java.version>5.1.37</mysql-connector-java.version>
 	</properties>
 
@@ -37,11 +37,6 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-		</dependency>
-		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>${mysql-connector-java.version}</version>
@@ -57,36 +52,6 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.4</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjweaver</artifactId>
-			<version>1.8.13</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.8.1</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi</artifactId>
-			<version>3.16</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml-schemas</artifactId>
-			<version>3.16</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.poi</groupId>
-			<artifactId>poi-ooxml</artifactId>
-			<version>3.16</version>
 		</dependency>
 
 		<dependency>
@@ -113,38 +78,21 @@
 			<artifactId>shiro-spring</artifactId>
 			<version>1.4.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
 			<artifactId>shiro-core</artifactId>
 			<version>1.4.0</version>
 		</dependency>
-		<!-- 引入springboot 内嵌的Tomcat对JSP的解析包 -->
+
+		<!-- jstl标签依赖的jar包end -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
-
-		<!-- servlet依赖的jar包start -->
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-		</dependency>
-		<!-- servlet依赖的jar包end -->
-
-		<!-- jsp依赖的jar包start -->
-		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-		</dependency>
-		<!-- jsp依赖的jar包end -->
-
-		<!-- jstl标签依赖的jar包start -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-		<!-- jstl标签依赖的jar包end -->
 		<!-- optaplanner依赖的jar包start -->
 		<dependency>
 			<groupId>org.optaplanner</groupId>
@@ -153,34 +101,29 @@
 		<dependency>
 			<groupId>org.optaplanner</groupId>
 			<artifactId>optaplanner-persistence-common</artifactId>
-		</dependency>
-		<dependency><!-- Most examples use the XStream integration -->
-			<groupId>org.optaplanner</groupId>
-			<artifactId>optaplanner-persistence-xstream</artifactId>
-		</dependency>
-		<dependency><!-- Few examples use the JAXB integration -->
-			<groupId>org.optaplanner</groupId>
-			<artifactId>optaplanner-persistence-jaxb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.optaplanner</groupId>
-			<artifactId>optaplanner-benchmark</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.optaplanner</groupId>
-			<artifactId>optaplanner-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-decisiontables</artifactId>
+			<version>7.38.0.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- optaplanner依赖的jar包end -->
+		<!-- https://mvnrepository.com/artifact/com.alibaba/easyexcel -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>easyexcel</artifactId>
+			<version>2.2.6</version>
+		</dependency>
+
+		<!--devtools热部署
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+			<scope>true</scope>
+		</dependency>
+		-->
+        <!-- optaplanner依赖的jar包end -->
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -199,6 +142,9 @@
 			</plugin>
 		</plugins>
 		<!-- 使用IDEA开发JSP,为了防止找不到页面,出现404错误,必须加入下面配置 -->
+		<!-- tomcat 依赖-->
+
+
 		<!--
         maven打包配置resources:
         -->

@@ -1,0 +1,40 @@
+.white_text {
+	color: #FFFFFF;
+}
+
+.loginForm {
+	padding: 0px 0px 0px 0px;
+}
+
+.nav_welcome {
+	padding: 15px 0px 0px 0px;
+	font-size: 16px;
+}
+
+// Class
+.center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.title-lable {
+	padding-bottom: 5px;
+}
+
+.workStationLabel {
+	background-color: #eeeeee;
+}
+
+.buttonMargin {
+	margin-top: 3px;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+.navbar-brand-logo {
+    float: left;
+    height: 50px;
+    padding: 0px 15px !important;
+    font-size: 18px;
+    line-height: 20px;
+}

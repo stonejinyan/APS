@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aps.dao.ProductModelTableDao">
+    <select id="findByClassifyAndModelName" resultType="com.aps.bean.ProductModelTable">
+        SELECT
+        *
+        FROM product_model_table
+        where product_classify_name = #{productClassifyName} and product_model_name = #{productModelName}
+    </select>
+</mapper>

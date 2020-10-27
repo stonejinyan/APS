@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <solver>
-    <!--<environmentMode>FAST_ASSERT</environmentMode>-->
+    <!--<environmentMode>NON_REPRODUCIBLE</environmentMode>
 
-    <!-- Domain model configuration -->
+     Domain model configuration -->
     <scanAnnotatedClasses>
         <packageInclude>com.aps</packageInclude>
     </scanAnnotatedClasses>
 
     <!-- Score configuration -->
     <scoreDirectorFactory>
-        <easyScoreCalculatorClass>com.aps.scorecalculator.TimeTableEasyScoreCalculator</easyScoreCalculatorClass>
+        <easyScoreCalculatorClass>com.aps.scorecalculator.MOPlanningEasyScoreCalculator</easyScoreCalculatorClass>
+        <!--<easyScoreCalculatorCustomProperties>
+            <myCacheSize>1000</myCacheSize>--><!-- Override value -->
+        <!--</easyScoreCalculatorCustomProperties>-->
         <!--<easyScoreCalculatorClass>org.optaplanner.examples.cloudbalancing.optional.score.CloudBalancingMapBasedEasyScoreCalculator</easyScoreCalculatorClass>-->
         <!--<incrementalScoreCalculatorClass>org.optaplanner.examples.cloudbalancing.optional.score.CloudBalancingIncrementalScoreCalculator</incrementalScoreCalculatorClass>-->
         <!--<scoreDrl>org/optaplanner/examples/cloudbalancing/solver/cloudBalancingScoreRules.drl</scoreDrl>-->
@@ -21,7 +24,7 @@
 
     <!-- Optimization algorithms configuration -->
     <termination>
-        <secondsSpentLimit>50</secondsSpentLimit>
+        <secondsSpentLimit>72000</secondsSpentLimit>
     </termination>
     <!-- Power tweaked optimization algorithms configuration -->
     <!--<constructionHeuristic>-->
@@ -40,5 +43,7 @@
     <!--<forager>-->
     <!--<acceptedCountLimit>1000</acceptedCountLimit>-->
     <!--</forager>-->
-    <!--</localSearch>-->
+    <!--</localSearch>
+    <moveThreadCount>AUTO</moveThreadCount>
+    -->
 </solver>

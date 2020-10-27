@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.aps.dao.TestMODao">
+    <select id="findList" resultType="com.aps.bean.MO">
+        SELECT
+        mo_id AS moID,
+        panel AS panel,
+        mo AS mo,
+        des AS des,
+        quantity AS quantity,
+        ci AS ci,
+        model_id AS modelID,
+        so AS so,
+        batch AS batch,
+        wbs AS wbs,
+        project_name AS projectName,
+        lead_time_days AS leadTimeDays,
+        delivery_date AS deliveryDate,
+        start_date AS moStartDate,
+        material_date AS materialDate,
+        process_id AS processID,
+        process_name AS processName,
+        product_model_name AS productModelName,
+        product_classify_name AS productClassifyName,
+        tt AS tt,
+        lt AS lt,
+        lt_include_fat AS lt_include_fat,
+        lt_to_fat AS lt_to_fat,
+        available_days AS availableDays
+        FROM test_mo_view
+    </select>
+    <select id="download" resultType="com.aps.bean.MOExcel">
+        SELECT
+        mo_id AS moID,
+        panel AS panel,
+        mo AS mo,
+        des AS des,
+        quantity AS quantity,
+        ci AS ci,
+        model_id AS modelID,
+        so AS so,
+        batch AS batch,
+        wbs AS wbs,
+        project_name AS projectName,
+        lead_time_days AS leadTimeDays,
+        delivery_date AS deliveryDate,
+        start_date AS moStartDate,
+        material_date AS materialDate,
+        process_id AS processID,
+        process_name AS processName,
+        product_model_name AS productModelName,
+        product_classify_name AS productClassifyName,
+        tt AS tt,
+        lt AS lt,
+        lt_include_fat AS lt_include_fat,
+        lt_to_fat AS lt_to_fat,
+        available_days AS availableDays
+        FROM test_mo_view
+    </select>
+    <select id="getMaxDate" resultType="java.util.Date">
+        SELECT
+        Max(delivery_date)
+        FROM test_mo_view
+    </select>
+    <select id="getMinDate" resultType="java.util.Date">
+        SELECT
+        Min(start_date)
+        FROM test_mo_view
+    </select>
+    <update id="update">
+        UPDATE test_mo SET
+        start_date = #{moStartDate},
+        process_id = #{processID}
+        WHERE mo_id = #{moID}
+    </update>
+    <update id="clear">
+        UPDATE test_mo SET
+        start_date = null,
+        process_id = null
+    </update>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="moID">
+        insert into test_mo
+        (panel,
+        mo,
+        des,
+        quantity,
+        ci,
+        model_id,
+        so,
+        batch,
+        wbs,
+        project_name,
+        delivery_date,
+        material_date)
+        values
+        (#{panel},
+        #{mo},
+        #{des},
+        #{quantity},
+        #{customerID},
+        #{modelID},
+        #{so},
+        #{batch},
+        #{wbs},
+        #{projectName},
+        #{deliveryDate},
+        #{materialCompletenessDate})
+        ON DUPLICATE KEY UPDATE
+        panel = values(panel),
+        mo = values(mo),
+        des = values(des),
+        quantity = values(quantity),
+        ci = values(ci),
+        model_id = values(model_id),
+        so = values(so),
+        batch = values(batch),
+        wbs = values(wbs),
+        project_name = values(project_name),
+        delivery_date = values(delivery_date),
+        material_date = values(material_date)
+    </insert>
+</mapper>
